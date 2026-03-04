@@ -3,243 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>車両利用記録アプリ</title>
-
+<title>開始入力</title>
 <style>
-body { font-family: sans-serif; padding:15px; background:#f5f5f5; }
-h1 { text-align:center; }
-.block { background:white; padding:12px; margin-bottom:18px; border-radius:8px; }
-label { display:block; margin-top:10px; font-weight:bold; }
-input, select, textarea {
-  width:100%; padding:8px; margin-top:4px;
-  border:1px solid #ccc; border-radius:5px;
-}
-button {
-  width:100%; padding:12px;
-  background:#28a745; color:white;
-  border:none; border-radius:8px;
-  font-size:18px; margin-top:15px;
-}
+    body { font-family: sans-serif; padding: 15px; background: #f5f5f5; }
+    h1 { text-align:center; }
+    .block { background: white; padding: 12px; margin-bottom: 18px; border-radius: 8px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select, textarea {
+        width: 100%; padding: 8px; margin-top: 4px;
+        border: 1px solid #ccc; border-radius: 5px;
+    }
+    button {
+        width: 100%; padding: 12px; background: #28a745; color: white;
+        border: none; border-radius: 8px; font-size: 18px;
+    }
 </style>
 </head>
-
 <body>
 
-<h1>車両利用記録アプリ</h1>
+<h1>開始入力（予定）</h1>
 
 <div class="block">
-<h2>開始入力（予定）</h2>
+    <label>日付</label>
+    <input type="date" id="date">
 
-<label>日付</label>
-<input type="date" id="date">
+    <label>開始時刻</label>
+    <input type="time" id="startTime">
 
-<label>開始時刻</label>
-<input type="time" id="startTime">
+    <label>運転者</label>
+    <select id="driver"></select>
 
-<label>運転者</label>
-<select id="driver"></select>
+    <label>車両番号</label>
+    <select id="carNumber"></select>
 
-<label>車両番号</label>
-<select id="carNumber"></select>
+    <label>睡眠時間</label>
+    <input type="number" id="sleep" placeholder="例：6">
 
-<label>睡眠時間</label>
-<input type="number" id="sleep">
+    <label>開始Alc</label>
+    <select id="startAlc">
+        <option value="OK">OK</option>
+        <option value="NG">NG</option>
+    </select>
 
-<label>開始Alc</label>
-<select id="startAlc">
-<option value="OK">OK</option>
-<option value="NG">NG</option>
-</select>
+    <label>薬の服用</label>
+    <select id="medicine">
+        <option value="無">無</option>
+        <option value="有">有</option>
+    </select>
 
-<label>薬の服用</label>
-<select id="medicine">
-<option value="無">無</option>
-<option value="有">有</option>
-</select>
+    <label>薬による眠気</label>
+    <select id="sleepy">
+        <option value="無">無</option>
+        <option value="有">有</option>
+    </select>
 
-<label>薬による眠気</label>
-<select id="sleepy">
-<option value="無">無</option>
-<option value="有">有</option>
-</select>
+    <label>開始体調</label>
+    <select id="startCond">
+        <option value="良">良</option>
+        <option value="普通">普通</option>
+        <option value="悪い">悪い</option>
+    </select>
 
-<label>開始体調</label>
-<select id="startCond">
-<option value="良">良</option>
-<option value="普通">普通</option>
-<option value="悪い">悪い</option>
-</select>
+    <label>開始車両状態</label>
+    <select id="startCar">
+        <option value="正常">正常</option>
+        <option value="異常">異常</option>
+    </select>
 
-<label>開始車両状態</label>
-<select id="startCar">
-<option value="正常">正常</option>
-<option value="異常">異常</option>
-</select>
-
-<label>経路（予定）</label>
-<select id="startRoute">
-<option value="会社">会社</option>
-<option value="自宅">自宅</option>
-<option value="現場">現場</option>
-<option value="市内">市内</option>
-<option value="岩国">岩国</option>
-<option value="柳井">柳井</option>
-<option value="光">光</option>
-<option value="下松">下松</option>
-<option value="周南">周南</option>
-<option value="防府">防府</option>
-<option value="山口">山口</option>
-<option value="宇部">宇部</option>
-<option value="美祢">美祢</option>
-<option value="下関">下関</option>
-<option value="長門">長門</option>
-<option value="萩">萩</option>
-</select>
+    <label>経路（予定）</label>
+    <select id="startRoute">
+        <option value="会社">会社</option>
+        <option value="自宅">自宅</option>
+        <option value="現場">現場</option>
+        <option value="市内">市内</option>
+        <option value="岩国">岩国</option>
+        <option value="柳井">柳井</option>
+        <option value="光">光</option>
+        <option value="下松">下松</option>
+        <option value="周南">周南</option>
+        <option value="防府">防府</option>
+        <option value="山口">山口</option>
+        <option value="宇部">宇部</option>
+        <option value="美祢">美祢</option>
+        <option value="下関">下関</option>
+        <option value="長門">長門</option>
+        <option value="萩">萩</option>
+    </select>
+</div>
 
 <button id="sendStart">開始を送信</button>
-</div>
-
-<div class="block">
-<h2>終了入力（実績）</h2>
-
-<label>終了時刻</label>
-<input type="time" id="endTime">
-
-<label>終了Alc</label>
-<select id="endAlc">
-<option value="OK">OK</option>
-<option value="NG">NG</option>
-</select>
-
-<label>終了体調</label>
-<select id="endCond">
-<option value="良">良</option>
-<option value="普通">普通</option>
-<option value="悪い">悪い</option>
-</select>
-
-<label>終了車両状態</label>
-<select id="endCar">
-<option value="正常">正常</option>
-<option value="異常">異常</option>
-</select>
-
-<label>出発地</label>
-<select id="dep">
-<option value="会社">会社</option>
-<option value="自宅">自宅</option>
-<option value="現場">現場</option>
-<option value="市内">市内</option>
-<option value="県内">県内</option>
-</select>
-
-<label>経由1</label>
-<select id="via1">
-<option value="">なし</option>
-<option value="会社">会社</option>
-<option value="自宅">自宅</option>
-<option value="現場">現場</option>
-<option value="市内">市内</option>
-<option value="県内">県内</option>
-</select>
-
-<label>経由2</label>
-<select id="via2">
-<option value="">なし</option>
-<option value="会社">会社</option>
-<option value="自宅">自宅</option>
-<option value="現場">現場</option>
-<option value="市内">市内</option>
-<option value="県内">県内</option>
-</select>
-
-<label>到着地</label>
-<select id="arr">
-<option value="会社">会社</option>
-<option value="自宅">自宅</option>
-<option value="現場">現場</option>
-<option value="市内">市内</option>
-<option value="県内">県内</option>
-</select>
-
-<label>経路（実績）</label>
-<textarea id="route"></textarea>
-
-<label>備考</label>
-<textarea id="note"></textarea>
-
-<button id="sendEnd">終了を送信</button>
-</div>
 
 <script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbzPf0d9kOTAlrJ7RtXW9hU4DgH3xP0tnK5HHZrh2lIfGvUQ8j-L7Q-v_b31hMjfO2B6FQ/exec";
-
+// リスト（運転者・車両）
 const drivers = ["岡山和徳","土田一樹","中野昌広","高橋徹","中山怜","目敏彦","江澤現之","藤本晴樹","中野桂子","田平友美"];
 const cars = ["11-00(セレナ)","11-55(セレナ)","84-62","52-78","71-71","27-01","03-54","02-12(軽トラ)","16-96(軽トラ)","27-70(2tDT)","10-95(4t)","79-55"];
 
+// ドロップダウンに反映
 window.onload = () => {
-  const d = document.getElementById("driver");
-  d.innerHTML = '<option value="">選択してください</option>';
-  drivers.forEach(n => d.innerHTML += `<option value="${n}">${n}</option>`);
+    const d = document.getElementById("driver");
+    d.innerHTML = '<option value="">選択してください</option>';
+    drivers.forEach(n => d.innerHTML += `<option value="${n}">${n}</option>`);
 
-  const c = document.getElementById("carNumber");
-  c.innerHTML = '<option value="">選択してください</option>';
-  cars.forEach(n => c.innerHTML += `<option value="${n}">${n}</option>`);
+    const c = document.getElementById("carNumber");
+    c.innerHTML = '<option value="">選択してください</option>';
+    cars.forEach(n => c.innerHTML += `<option value="${n}">${n}</option>`;
 };
 
+// GAS URL（コピーして貼ってください）
+const GAS_URL = "https://script.google.com/macros/s/YOUR_GAS_URL/exec";
+
+// 開始送信
 document.getElementById("sendStart").addEventListener("click", () => {
-  const data = {
-    mode:"start",
-    date:date.value,
-    startTime:startTime.value,
-    driver:driver.value,
-    carNumber:carNumber.value,
-    sleep:sleep.value,
-    startAlc:startAlc.value,
-    medicine:medicine.value,
-    sleepy:sleepy.value,
-    startCond:startCond.value,
-    startCar:startCar.value,
-    startRoute:startRoute.value
-  };
+    const data = {
+        mode: "start",
+        date: document.getElementById("date").value,
+        startTime: document.getElementById("startTime").value,
+        driver: document.getElementById("driver").value,
+        carNumber: document.getElementById("carNumber").value,
+        sleep: document.getElementById("sleep").value,
+        startAlc: document.getElementById("startAlc").value,
+        medicine: document.getElementById("medicine").value,
+        sleepy: document.getElementById("sleepy").value,
+        startCond: document.getElementById("startCond").value,
+        startCar: document.getElementById("startCar").value,
+        startRoute: document.getElementById("startRoute").value
+    };
 
-  fetch(GAS_URL,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(data)
-  })
-  .then(res=>res.json())
-  .then(res=>{
-    localStorage.setItem("row",res.row);
-    alert("開始を記録しました");
-  })
-  .catch(()=>alert("送信エラー"));
-});
-
-document.getElementById("sendEnd").addEventListener("click", () => {
-  const data = {
-    mode:"end",
-    row:localStorage.getItem("row"),
-    endTime:endTime.value,
-    endAlc:endAlc.value,
-    endCond:endCond.value,
-    endCar:endCar.value,
-    dep:dep.value,
-    via1:via1.value,
-    via2:via2.value,
-    arr:arr.value,
-    route:route.value,
-    note:note.value
-  };
-
-  fetch(GAS_URL,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(data)
-  })
-  .then(res=>res.json())
-  .then(()=>alert("終了を記録しました"))
-  .catch(()=>alert("送信エラー"));
+    fetch(GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+        localStorage.setItem("row", res.row);
+        alert("開始を記録しました！\n行番号: " + res.row);
+    })
+    .catch(() => alert("送信エラー"));
 });
 </script>
 
